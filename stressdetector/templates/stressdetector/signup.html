@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Stress Detection</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #eeeeee; /* Light grey background */
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400; /* Regular text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        form {
+            width: 100%;
+            max-width: 400px;
+            padding: 25px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            background: #ffffff; /* White form background */
+            text-align: center;
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: 500; /* Slightly bold font */
+            color: #333; /* Darker grey for headings */
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1em;
+            color: #555; /* Medium grey for text */
+        }
+        label {
+            display: block;
+            font-size: 0.9em;
+            font-weight: 500; /* Slightly bold font for labels */
+            margin-bottom: 5px;
+            color: #444; /* Dark grey for labels */
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            background: #f9f9f9; /* Light grey input background */
+            font-weight: 400; /* Regular input text */
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #bbb; /* Medium grey border on focus */
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Soft focus shadow */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: 500; /* Slightly bold text for buttons */
+            background: #888; /* Medium grey button */
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #666; /* Darker grey on hover */
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+            font-weight: 500; /* Slightly bold text for links */
+            color: #555; /* Medium grey for links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #333; /* Darker grey on hover */
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: white;
+            text-align: center;
+        }
+        .message.success {
+            background: #4caf50;
+        }
+        .message.error {
+            background: #f44336;
+        }
+        .errormessage {
+            color: #f44336;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Media Query for responsiveness */
+        @media (max-width: 500px) {
+            form {
+                padding: 15px 25px;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            input, button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        <h2>Register</h2>
+        <p>Sign up with your username and password</p>
+        
+        <label for="username">User Name</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" id="cpassword" name="cpassword" placeholder="Confirm your password" required>
+        
+        {% if errors.cpassword_error %}
+            <div class="errormessage">{{ errors.cpassword_error }}</div>
+        {% endif %}
+        
+        <button type="submit">Sign Up</button>
+        <a href="{% url 'login' %}">Already have an account? Login here</a>
+    </form>
+
+</body>
+</html>

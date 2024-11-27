@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Data Result</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    width: 400px;
+    padding: 20px;
+    background-color: #222;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    height: auto; /* Allow content to adjust height */
+}
+
+.message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px; /* Increased margin for spacing */
+}
+
+.quote {
+    font-size: 16px;
+    font-style: italic;
+    color: #ccc;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    padding: 12px 24px; /* Slightly bigger padding */
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 18px; /* Slightly bigger font size */
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background-color: #444;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+a:hover {
+    color: #ccc;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .message {
+        font-size: 18px;
+    }
+
+    .back-btn {
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message" id="resultMessage">
+            {% if is_stressed == "Stressed" %}
+                <span style="color: red;">You are Stressed.</span>
+            {% else %}
+                <span style="color: green;">You are Not Stressed.</span>
+            {% endif %}
+        </div>
+        <div class="quote" id="quoteMessage">
+            {% if is_stressed == "Stressed" %}
+                Stress is an indicator that you need to take care of your body and mind. Consider incorporating relaxation techniques, such as deep breathing or meditation, into your routine. Remember, it's important to manage stress for both your physical and mental well-being.
+            {% else %}
+                Great! Keep taking care of yourself and stay healthy. Regular sleep, a balanced diet, and exercise are key to maintaining your well-being. Continue staying mindful of your health!
+            {% endif %}
+        </div>
+        <a href="{% url 'predict_stress' %}" class="back-btn">Back to Data Entry</a>
+    </div>
+</body>
+
+</html>

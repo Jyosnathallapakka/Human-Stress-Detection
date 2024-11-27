@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Detection</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body styling with soft gradient background */
+        body {
+            background: linear-gradient(to bottom, #eef2f3, #8e9eab); /* Soft gradient */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa; /* Light gray */
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #4b6584;
+            text-decoration: none;
+            font-size: 1em;
+            margin: 0 15px;
+            text-transform: capitalize;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #3d3d3d;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Main content container */
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 80px; /* Adjust for fixed navbar */
+            padding: 20px;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+
+        /* Left side: Image */
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .image-container img {
+            width: 100%; /* Increased image size */
+            max-width: 500px; /* Restrict maximum width */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Right side: Text */
+        .text-container {
+            flex: 1;
+            text-align: left;
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #4b6584;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Button group */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 12px 25px;
+            font-size: 1em;
+            text-transform: capitalize;
+            font-weight: bold;
+            color: #fff;
+            background: #cdd086; /* Darker button color */
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .button:hover {
+            background: #2d98da;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            font-size: 0.9em;
+            color: #888;
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: auto; /* Ensures footer is pushed to the bottom */
+        }
+
+        footer a {
+            color: #4b6584;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        footer a:hover {
+            color: #2d98da;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .text-container {
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .image-container img {
+                max-width: 100%; /* Ensure full width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">Stress Detector</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Help</a>
+            <a href="{% url 'login' %}">Login</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Left side: Stress detection image -->
+        <div class="image-container">
+            <img src="https://www.nomidl.com/wp-content/uploads/2022/11/stress-main.png" alt="Stress Detection">
+        </div>
+
+        <!-- Right side: Text information -->
+        <div class="text-container">
+            <h1>Stress Detection</h1>
+            <p>Effortlessly monitor and manage your stress levels with advanced technology designed to provide insights and support your well-being.</p>
+            
+            <!-- Button group -->
+            <div class="button-group">
+                <a href="{% url 'login' %}" class="button">Login</a>
+                <a href="{% url 'signup' %}" class="button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Stress Detector | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+    </footer>
+</body>
+</html>
